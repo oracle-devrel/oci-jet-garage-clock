@@ -21,20 +21,24 @@ This step-by-step tutorial focuses on deploying a Preact and JET client-side app
 - Echo your _namespace_:  
         `oci os ns get -c $OCI_TENANCY --query 'data' --raw-output`  
 - Log in to your container registry - replace with xxx with your region  
-        `docker login <paste yoy region>.ocir.io`  
+        `docker login <paste your region>.ocir.io`  
 - Input your details  
         Username:   
         Password: `<paste auth token>`
 - Tag your container:  
-        `docker tag clock:latest <paste yoy region>.ocir.io/<paste namespace>/clock:latest`  
+        `docker tag clock:latest <paste your region>.ocir.io/<paste namespace>/clock:latest`  
 - Push your image to the Container Registry:  
-        `docker push <paste yoy region>.ocir.io/<paste namespace>/clock:latest`
+        `docker push <paste your region>.ocir.io/<paste namespace>/clock:latest`
 
 ### Deploy Container Instance
 We will deploy our app using UI, but you can do with Cloud Shell too.
 - Click on _hamburger menu_   
         ![app home](doc/images/1hamburger.png)  
 - Click on _Developer Services_
+        ![app home](doc/images/2DeveloperServices.png)  
+- Click on _Container Registry_
+        ![app home](doc/images/2DeveloperServices.png)  
+- Click on and a cog and _Change to public_
         ![app home](doc/images/2DeveloperServices.png)  
 - Click on _Container Instances_
         ![app home](doc/images/3ContainerInstances.png)  
