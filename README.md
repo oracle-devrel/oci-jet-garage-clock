@@ -3,23 +3,24 @@
 [![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green) [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=oracle-devrel_oci-jet-garage-clock)](https://sonarcloud.io/dashboard?id=oracle-devrel_oci-jet-garage-clock)
 
 ## Introduction
-Using Preact and the Oracle JavaScript Extension Toolkit (JET), learn how to build and deploy the same application used by the Oracle Red Bull Racing team to manage their race schedule and event timing.  You will learn about JavaScript date/time API usage, manipulation of list based data, and the browsers localStorage API for offline features all in a standalone client-side application.  You will also learn how to deploy the application to the Oracle Cloud Infrastructure(OCI) using Docker, so that the application is readily available from anywhere in the world.
+This step-by-step tutorial focuses on deploying a Preact and JET client-side application to Oracle Cloud Infrastructure (OCI) using Docker. Docker enables lightweight and efficient container instances that eliminate server management, and OCI enables worldwide accessibility. The guide walks you through building a Docker image, pushing it to a Docker registry, and creating a container instance on OCI using the Docker image.
+![app home](doc/images/appHome.png)  
 
 ## Getting Started - Deploy Oracle JET app to the Container Instances
 ### Compile and push your image  
 - Login to your account on cloud.oracle.com  
 - Open Cloud Shell  
 - Clone this repository with following command (TODO)  
-        `git clone -b CI https://github.com/WSPluta/f1countDownTimer.git`
+        `git clone https://github.com/oracle-devrel/oci-jet-garage-clock.git`
 - Open your freshly cloned repository:  
-        `cd garageClock`  
+        `cd oci-jet-garage-clock`  
 - Create docker container:   
         `docker build -t clock .`  
 - Generate auth token:  
         `oci iam auth-token create --description "DEFAULT" --user-id <paste user OCID> --query 'data.token' --raw-output`  
 - Echo your _namespace_:  
         `oci os ns get -c $OCI_TENANCY --query 'data' --raw-output`  
-- Login to your container registry - replace with xxx with your region  
+- Log in to your container registry - replace with xxx with your region  
         `docker login <paste yoy region>.ocir.io`  
 - Input your details  
         Username:   
