@@ -37,9 +37,9 @@ We will deploy our app using UI, but you can do with Cloud Shell too.
 - Click on _Developer Services_
         ![app home](doc/images/2DeveloperServices.png)  
 - Click on _Container Registry_
-        ![app home](doc/images/2DeveloperServices.png)  
+        ![app home](doc/images/3AContainerRegistry.png)  
 - Click on and a cog and _Change to public_
-        ![app home](doc/images/2DeveloperServices.png)  
+        ![app home](doc/images/3BChangeToPublic.png)  
 - Click on _Container Instances_
         ![app home](doc/images/3ContainerInstances.png)  
 - Click on _Create container instance_
