@@ -1,0 +1,242 @@
+/*
+    Document   : override
+    Created on : 03.04.2023
+    Author     : Wojciech Pluta
+    Description:
+        This is where any of your application specific styles should be included
+*/
+
+:root {
+  --custom-black: #312D2A;
+
+  --custom-neutral20: #f5f4f2;
+
+  --ut-header-background-colour: var(--custom-black);
+
+  --oj-current-bg-color: var(--custom-blue);
+  --oj-body-bg-color: var(--custom-black);
+  --oj-core-text-color-primary: var(--custom-ocean190);
+}
+
+button.addbtn {
+  border: none;
+}
+
+.addbtn {
+  width: 50px;
+  height: 50px;
+  background-color: var(--custom-black);
+
+  box-shadow: 0 6px 10px 0 #666;
+
+  font-size: 50px;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+
+  position: fixed;
+  right: 25px;
+  bottom: 75px;
+
+  transition: all 0.1s ease-in-out;
+}
+
+.addbtn:hover {
+  box-shadow: 0 6px 14px 0 #666;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+button.addbtn:focus,
+button.addbtn__content:focus {
+  outline: none;
+}
+button.addbtn:focus-visible {
+  outline: dotted black;
+}
+
+button.addbtn2 {
+  border: none;
+  outline: none;
+}
+
+.addbtn2 {
+  background-color: var(--custom-black);
+  transition: all 0.1s ease-in-out;
+}
+
+.addbtn2:hover {
+  box-shadow: 0 1px 3px 0 #666;
+  transform: scale(1.005);
+  cursor: pointer;
+}
+
+button.addbtn2:focus,
+button.addbtn2__content:focus {
+  outline: none;
+}
+button.addbtn2:focus-visible {
+  outline: none;
+}
+
+.clock-settings-ico {
+  font-size: 20px;
+}
+.clock-content-container {
+  min-height: 100vh;
+}
+
+.clock-listview-sizing {
+  height: 350px;
+}
+
+.clock-event-container {
+  color: var(--custom-neutral20);
+  margin: auto;
+  text-align: center;
+}
+
+.footer {
+  height: 100px;
+  margin-top: -110px;
+  margin-right: 50px;
+}
+
+.clock-event-panel {
+  max-width: 25% !important;
+  height: 100vh;
+  padding-bottom:75px;
+  padding-left: 4vw;
+}
+
+.clock-video-container {
+  color: var(--custom-neutral20);
+  padding-bottom: 75px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.clock-time-text-clock {
+  font-style: normal;
+  font-family: sans-serif;
+  letter-spacing: 0.01rem;
+  font-size: calc(10px + 0.75vw);
+}
+
+.clock-time-text-hero-label {
+  font-size: calc(10px + 1.0vw);
+  color: var(--custom-neutral20);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  padding-top: 0.5rem;
+}
+
+.clock-time-text-label {
+  font-style: normal;
+  font-family: sans-serif;
+  font-size: calc(10px + 0.75vw);
+  letter-spacing: 0.1rem;
+}
+
+.clock-time-text-label2 {
+  font-style: normal;
+  font-family: sans-serif;
+  font-size: calc(10px + 0.75vw);
+  letter-spacing: 0.1rem;
+}
+
+.clock-drawer-end {
+  width: 25vw;
+}
+.clock-drawer-container {
+  margin: 8px;
+}
+.clock-drawer-header {
+  /*  */
+}
+
+.clock-drawer-content {
+  /*  */
+}
+
+.clock-counter-text {
+  color: var(--custom-neutral20);
+  text-align: center;
+  word-spacing: 1rem;
+  font-size: calc(20px + 1.5vw);
+  display: flex;
+  justify-content: center;
+}
+
+.clock-counter-text-colon {
+  color: var(--custom-neutral20);
+  text-align: center;
+  word-spacing: 1rem;
+  font-size: calc(20px + 0.5vw);
+  display: flex;
+  justify-content: center;
+}
+
+.clock-time-text {
+  font-style: italic;
+}
+
+.clock-counter-label {
+  color: var(--custom-neutral20);
+  font-family: sans-serif;
+  font-size: small;
+}
+
+.clock-icon {
+  width: 89%;
+  height: 89%;
+  margin: auto;
+  padding-top: 10vh;
+  margin-bottom: -70px;
+  content: url(images/ContainerInstance.svg);
+}
+
+.clock-icon:before {
+}
+
+html:not([dir="rtl"]) .clock-icon {
+  padding-right: 4px;
+}
+
+html[dir="rtl"] .clock-icon {
+  padding-left: 4px;
+}
+
+.clock-icon:before {
+  display: inline;
+}
+
+.oracle-icon {
+  width: 95%;
+  height: 79%;
+  content: url(images/Powered_By_Oracle_Cloud_Logo_RGB_White-01.png);
+}
+
+.oracle-icon:before {
+}
+
+html:not([dir="rtl"]) .oracle-icon {
+  padding-right: 4px;
+}
+
+html[dir="rtl"] .oracle-icon {
+  padding-left: 4px;
+}
+
+.oracle-icon:before {
+  display: inline;
+}
+
+.line-icon {
+  margin-top: 3.5vh;
+  width: 300px;
+  height: 2px;
+  content: url(images/line.png);
+  margin-bottom: 2.5vh;
+}

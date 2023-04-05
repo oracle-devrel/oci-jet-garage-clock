@@ -1,0 +1,22 @@
+{
+  "name": "tempProjectF1",
+  "version": "1.0.0",
+  "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
+  "dependencies": {
+    "@oracle/oraclejet": "~14.0.1",
+    "@oracle/oraclejet-core-pack": "~14.0.1"
+  },
+  "devDependencies": {
+    "@oracle/ojet-cli": "~14.0.1",
+    "extract-zip": "^1.7.0",
+    "fs-extra": "^8.1.0",
+    "glob": "7.2.0",
+    "typescript": "4.8.4",
+    "underscore": "^1.10.2",
+    "yargs-parser": "13.1.2"
+  },
+  "engines": {
+    "node": ">=12.21.0"
+  },
+  "private": true
+}
