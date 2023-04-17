@@ -10,7 +10,7 @@ This step-by-step tutorial focuses on deploying a Preact and JET client-side app
 ### Compile and push your image  
 - Login to your account on cloud.oracle.com  
 - Open Cloud Shell  
-- Clone this repository with following command (TODO)  
+- Clone this repository with following command
         `git clone https://github.com/oracle-devrel/oci-jet-garage-clock.git`
 - Open your freshly cloned repository:  
         `cd oci-jet-garage-clock`  
