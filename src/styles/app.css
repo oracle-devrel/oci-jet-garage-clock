@@ -1,21 +1,28 @@
 /*
     Document   : override
-    Created on : 03.04.2023
-    Author     : Wojciech Pluta
+    Created on : <date>
+    Author     : <author>
     Description:
         This is where any of your application specific styles should be included
 */
 
 :root {
-  --custom-black: #312D2A;
+  --demo-blue: rgb(49, 45, 42);
+  --demo-red: #ea1d2d;
+  --demo-yellow: #fcd700;
+  --demo-grey: #a8a9ac;
 
-  --custom-neutral20: #f5f4f2;
+  --clock-neutral20: rgb(245, 244, 242);
+  --clock-neutral50: rgb(212, 207, 202);
+  --clock-ocean180: rgb(2, 94, 126);
+  --clock-ocean190: rgb(22, 21, 19);
+  --clock-oracle: #c74634;
 
-  --ut-header-background-colour: var(--custom-black);
+  --ut-header-background-colour: var(--demo-grey);
 
-  --oj-current-bg-color: var(--custom-blue);
-  --oj-body-bg-color: var(--custom-black);
-  --oj-core-text-color-primary: var(--custom-ocean190);
+  --oj-current-bg-color: var(--demo-blue);
+  --oj-body-bg-color: var(--demo-blue);
+  --oj-core-text-color-primary: var(--clock-ocean190);
 }
 
 button.addbtn {
@@ -25,7 +32,7 @@ button.addbtn {
 .addbtn {
   width: 50px;
   height: 50px;
-  background-color: var(--custom-black);
+  background-color: var(--clock-oracle);
 
   box-shadow: 0 6px 10px 0 #666;
 
@@ -61,7 +68,7 @@ button.addbtn2 {
 }
 
 .addbtn2 {
-  background-color: var(--custom-black);
+  background-color: var(--demo-blue);
   transition: all 0.1s ease-in-out;
 }
 
@@ -69,6 +76,12 @@ button.addbtn2 {
   box-shadow: 0 1px 3px 0 #666;
   transform: scale(1.005);
   cursor: pointer;
+}
+.addbtn2:focus {
+  box-shadow: 0 1px 3px 0 #666;
+  transform: scale(1.005);
+  cursor: pointer;
+  border: unset;
 }
 
 button.addbtn2:focus,
@@ -83,34 +96,55 @@ button.addbtn2:focus-visible {
   font-size: 20px;
 }
 .clock-content-container {
-  min-height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 .clock-listview-sizing {
   height: 350px;
 }
 
+.clock-clock-container {
+  color: var(--clock-neutral20);
+  text-align: center;
+}
 .clock-event-container {
-  color: var(--custom-neutral20);
+  color: var(--clock-neutral20);
   margin: auto;
   text-align: center;
 }
 
 .footer {
   height: 100px;
-  margin-top: -110px;
   margin-right: 50px;
 }
 
-.clock-event-panel {
-  max-width: 25% !important;
-  height: 100vh;
-  padding-bottom:75px;
-  padding-left: 4vw;
+.p {
+  font-style: italic;
+  color: var(--clock-neutral20);
+}
+
+.clock-event-panel-left {
+  height: calc(100vh - 101px);
+  padding-left: 0vw;
+  flex-direction: column;
+}
+.clock-event-panel-right {
+  height: calc(100vh - 101px);
+  padding-right: 0vw;
+  flex-direction: column;
+}
+.clock-event-panel-middle {
+  margin-left: 25vw;
+  height: calc(100vh - 101px);
+  flex-direction: column;
+}
+
+.clock-content-middle {
+  min-width: 452px;
 }
 
 .clock-video-container {
-  color: var(--custom-neutral20);
+  color: var(--clock-neutral20);
   padding-bottom: 75px;
   width: 100%;
   min-height: 100vh;
@@ -124,8 +158,8 @@ button.addbtn2:focus-visible {
 }
 
 .clock-time-text-hero-label {
-  font-size: calc(10px + 1.0vw);
-  color: var(--custom-neutral20);
+  font-size: calc(10px + 1vw);
+  color: var(--clock-neutral20);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   font-family: sans-serif;
@@ -147,7 +181,7 @@ button.addbtn2:focus-visible {
 }
 
 .clock-drawer-end {
-  width: 25vw;
+  width: 23vw;
 }
 .clock-drawer-container {
   margin: 8px;
@@ -161,7 +195,7 @@ button.addbtn2:focus-visible {
 }
 
 .clock-counter-text {
-  color: var(--custom-neutral20);
+  color: var(--clock-neutral20);
   text-align: center;
   word-spacing: 1rem;
   font-size: calc(20px + 1.5vw);
@@ -170,7 +204,7 @@ button.addbtn2:focus-visible {
 }
 
 .clock-counter-text-colon {
-  color: var(--custom-neutral20);
+  color: var(--clock-neutral20);
   text-align: center;
   word-spacing: 1rem;
   font-size: calc(20px + 0.5vw);
@@ -182,58 +216,72 @@ button.addbtn2:focus-visible {
   font-style: italic;
 }
 
-.clock-counter-label {
-  color: var(--custom-neutral20);
+.o-text {
   font-family: sans-serif;
+  font-style: normal;
+  font-weight: 550;
   font-size: small;
 }
 
-.clock-icon {
+.clock-event-text {
+  color: var(--clock-neutral20);
+}
+
+.clock-counter-label {
+  color: var(--clock-neutral20);
+  font-family: sans-serif;
+  font-size: small;
+}
+.clock-counter-container {
+}
+
+.clock-tag-icon {
   width: 89%;
   height: 89%;
   margin: auto;
   padding-top: 10vh;
-  margin-bottom: -70px;
-  content: url(images/ContainerInstance.svg);
+  content: url(images/jet-logo.png);
 }
 
-.clock-icon:before {
+.clock-tag-icon:before {
 }
 
-html:not([dir="rtl"]) .clock-icon {
+html:not([dir="rtl"]) .clock-tag-icon {
   padding-right: 4px;
+  padding-bottom: 30px;
 }
 
-html[dir="rtl"] .clock-icon {
+html[dir="rtl"] .clock-tag-icon {
   padding-left: 4px;
+  padding-bottom: 30px;
 }
 
-.clock-icon:before {
+.clock-tag-icon:before {
   display: inline;
 }
 
-.oracle-icon {
-  width: 95%;
-  height: 79%;
+.clock-oracle-icon {
+  width: 719px;
+  height: 100px;
   content: url(images/Powered_By_Oracle_Cloud_Logo_RGB_White-01.png);
 }
 
-.oracle-icon:before {
+.clock-oracle-icon:before {
 }
 
-html:not([dir="rtl"]) .oracle-icon {
+html:not([dir="rtl"]) .clock-oracle-icon {
   padding-right: 4px;
 }
 
-html[dir="rtl"] .oracle-icon {
+html[dir="rtl"] .clock-oracle-icon {
   padding-left: 4px;
 }
 
-.oracle-icon:before {
+.clock-oracle-icon:before {
   display: inline;
 }
 
-.line-icon {
+.clock-line-icon {
   margin-top: 3.5vh;
   width: 300px;
   height: 2px;

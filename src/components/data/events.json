@@ -1,9 +1,11 @@
-[{"name":"Curfew", "startTime":"2023-03-29T16:50:50"},
-{"name":"Curfew", "startTime":"2023-03-29T16:51:50"},
-{"name":"FP1 Start", "startTime":"2023-03-29T16:52:50"},
-{"name":"FP2 Start", "startTime":"2023-03-29T16:53:50"},
-{"name":"Curfew", "startTime":"2023-03-29T16:54:50"},
-{"name":"FP3 Start", "startTime":"2023-03-29T16:55:50"},
-{"name":"Q1 Start", "startTime":"2023-03-29T16:56:50"},
-{"name":"Saturday Covers", "startTime":"2023-03-29T16:57:50"},
-{"name":"Pitlane Opens", "startTime":"2023-03-29T16:58:50"}]
+[
+  { "name": "Curfew", "startTime": "2023-09-20T13:50:50" },
+  { "name": "Curfew", "startTime": "2023-09-20T13:51:50" },
+  { "name": "FP1 Start", "startTime": "2023-09-20T13:52:50" },
+  { "name": "FP2 Start", "startTime": "2023-09-20T13:53:50" },
+  { "name": "Curfew", "startTime": "2023-09-20T13:54:50" },
+  { "name": "FP3 Start", "startTime": "2023-09-20T13:55:50" },
+  { "name": "Q1 Start", "startTime": "2023-09-20T13:56:50" },
+  { "name": "Saturday Covers", "startTime": "2023-09-20T13:57:50" },
+  { "name": "Pitlane Opens", "startTime": "2023-09-20T13:58:50" }
+]

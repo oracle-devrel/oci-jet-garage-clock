@@ -4,8 +4,8 @@
  * https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
  */
 
-import { h } from "preact";
-import { useState, useEffect, useMemo } from "preact/hooks";
+import "preact";
+import { useState, useEffect } from "preact/hooks";
 
 type Props = {
   targetTime: Date;
@@ -13,14 +13,6 @@ type Props = {
   autoLoad: boolean;
   currentTime: Date;
 };
-
-interface date {
-  total: number;
-  days: string;
-  hours: string;
-  minutes: string;
-  seconds: string;
-}
 
 const getTimeRemaining = (targetTime, currentTime) => {
   const total =
@@ -74,19 +66,19 @@ export function Counter(props: Props) {
     <div class="oj-typography-heading-2xl oj-sm-align-items-center oj-sm-justify-content-center">
       <div class="oj-flex oj-sm-12 oj-sm-justify-content-center">
         {/* 5 column panel for spacing */}
-        <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-drawer-header">
+        <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-counter-text">
           {hours}
         </div>
-        <div class="oj-flex-item oj-sm-1 oj-sm-align-items-center clock-drawer-header-colon">
+        <div class="oj-flex-item oj-sm-1 oj-sm-align-items-center clock-counter-text-colon">
           :
         </div>
-        <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-drawer-header">
+        <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-counter-text">
           {minutes}
         </div>
-        <div class="oj-flex-item oj-sm-1 oj-sm-align-items-center clock-drawer-header-colon">
+        <div class="oj-flex-item oj-sm-1 oj-sm-align-items-center clock-counter-text-colon">
           :
         </div>
-        <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-drawer-header">
+        <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-counter-text">
           {seconds}
         </div>
       </div>
@@ -95,7 +87,7 @@ export function Counter(props: Props) {
         <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-counter-label">
           HR
         </div>
-        <div class="oj-flex-item oj-sm-1 oj-sm-align-items-center clock-drawer-header"></div>
+        <div class="oj-flex-item oj-sm-1 oj-sm-align-items-center clock-counter-text"></div>
         <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-counter-label">
           MIN
         </div>
