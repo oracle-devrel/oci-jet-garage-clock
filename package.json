@@ -1,17 +1,17 @@
 {
-  "name": "OCI-Garage-Clock",
+  "name": "garageclock",
   "version": "1.0.0",
-  "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
+  "description": "Example project showing Red Bull Racing garage clock",
   "dependencies": {
-    "@oracle/oraclejet": "~14.1.0",
-    "@oracle/oraclejet-core-pack": "~14.1.0"
+    "@oracle/oraclejet": "~15.0.0",
+    "@oracle/oraclejet-core-pack": "~15.0.0"
   },
   "devDependencies": {
-    "@oracle/ojet-cli": "~14.1.0",
+    "@oracle/ojet-cli": "~15.0.0",
     "extract-zip": "^1.7.0",
     "fs-extra": "^8.1.0",
     "glob": "7.2.0",
-    "typescript": "4.8.4",
+    "typescript": "5.0.4",
     "underscore": "^1.10.2",
     "yargs-parser": "13.1.2"
   },
