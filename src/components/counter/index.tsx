@@ -41,6 +41,7 @@ const getTimeRemaining = (targetTime, currentTime) => {
 };
 
 export function Counter(props: Props) {
+  const [days, setDays] = useState<string>(null);
   const [hours, setHours] = useState<string>(null);
   const [minutes, setMinutes] = useState<string>(null);
   const [seconds, setSeconds] = useState<string>(null);
@@ -48,6 +49,7 @@ export function Counter(props: Props) {
   useEffect(() => {
     if (props.currentTime) {
       const t = getTimeRemaining(props.targetTime, props.currentTime);
+      setDays(t.days.padStart(2, "0"));
       setHours(t.hours.padStart(2, "0"));
       setMinutes(t.minutes.padStart(2, "0"));
       setSeconds(t.seconds.padStart(2, "0"));
@@ -64,8 +66,12 @@ export function Counter(props: Props) {
 
   return (
     <div class="oj-typography-heading-2xl oj-sm-align-items-center oj-sm-justify-content-center">
+              <div class="oj-flex-item  oj-sm-align-items-center clock-counter-text">
+          {days} Days
+        </div>
       <div class="oj-flex oj-sm-12 oj-sm-justify-content-center">
         {/* 5 column panel for spacing */}
+
         <div class="oj-flex-item oj-sm-3 oj-sm-align-items-center clock-counter-text">
           {hours}
         </div>

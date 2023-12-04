@@ -47,7 +47,9 @@ export function Clock(props: Props) {
         {/* Show the local time */}
         <div class="oj-flex-item oj-sm-flex-items-initial oj-sm-align-items-center clock-time-text-hero-label">
           <Time localTime={timeNow} />
+          
         </div>
+
       </div>
     </>
   );
