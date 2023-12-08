@@ -26,7 +26,6 @@ import { ojValidationGroup } from "ojs/ojvalidationgroup";
 type Props = {
   data: MutableRef<MutableArrayDataProvider<string, Event>>;
   loadNext: () => void;
-  apiUrl: string;
 };
 
 type Event = {
@@ -129,7 +128,7 @@ export function ScheduleContent(props: Props) {
           method: 'GET',
         };
     
-        const response = await fetch(props.apiUrl, requestOptions);
+        const response = await fetch("", requestOptions);
     
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -169,8 +168,8 @@ export function ScheduleContent(props: Props) {
     useEffect(() => {
       const fetchSchedule = async () => {
         try {
-          // // Clear local storage before fetching new data
-          // localStorage.clear();
+          // Clear local storage before fetching new data
+          localStorage.clear();
           const importData = await ImportClockJson();
           if (importData != null) {
             const newSchedule = JSON.parse(importData);
