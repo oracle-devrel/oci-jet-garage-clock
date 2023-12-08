@@ -30,9 +30,9 @@ const sortEvents = (events) => {
   return data;
 };
 
-if (localStorage.length > 0) {
-  for (let event in localStorage) {
-    let val = localStorage.getItem(event);
+if (sessionStorage.length > 0) {
+  for (let event in sessionStorage) {
+    let val = sessionStorage.getItem(event);
     if (typeof val === "string")
       eventData.push({ name: event, startTime: val });
   }

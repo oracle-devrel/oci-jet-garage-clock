@@ -26,6 +26,7 @@ import { ojValidationGroup } from "ojs/ojvalidationgroup";
 type Props = {
   data: MutableRef<MutableArrayDataProvider<string, Event>>;
   loadNext: () => void;
+  apiURL?:string;
 };
 
 type Event = {
@@ -84,7 +85,7 @@ export function ScheduleContent(props: Props) {
       for (let i = 0; i < fetchedEventData.length; i++) {
         const event = fetchedEventData[i];
         event.name = event.name + "-" + count;
-        localStorage.setItem(event.name, event.startTime);
+        sessionStorage.setItem(event.name, event.startTime);
         tempArray.push(event);
         count++;
       }
@@ -93,7 +94,7 @@ export function ScheduleContent(props: Props) {
       for (let i = 0; i < newSchedule.length; i++) {
         const event = newSchedule[i];
         event.name = event.name + "-" + count;
-        localStorage.setItem(event.name, event.startTime);
+        sessionStorage.setItem(event.name, event.startTime);
         tempArray.push(event);
         count++;
       }
@@ -119,24 +120,22 @@ export function ScheduleContent(props: Props) {
 
     return dateObj.toLocaleString("en-US", options);
   }, []);
+  
 
 
     // Async Import from File
     const ImportClockJson = async () => {
+      let apiURL = "";
       try {
         const requestOptions = {
           method: 'GET',
         };
-    
-        const response = await fetch("", requestOptions);
-    
+        const response = await fetch(apiURL, requestOptions);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-    
         const fetchedData = await response.text();
-        console.log("fetchedData", fetchedData);
-    
+        // console.log("fetchedData", fetchedData);
         return fetchedData;
       } catch (error) {
         console.error("Error fetching event data:", error.message);
@@ -144,32 +143,10 @@ export function ScheduleContent(props: Props) {
       }
     }
     
-    const fetchSchedule = async () => {
-      try {
-        let importData = await ImportClockJson();
-        if (importData != null) {
-          let newSchedule = JSON.parse(importData);
-          let tempArray = [...eventDP.current.data];
-    
-          for (let event in newSchedule) {
-            newSchedule[event].name = newSchedule[event].name + "-" + tempArray.length + 1;
-            localStorage.setItem(newSchedule[event].name, newSchedule[event].startTime);
-            tempArray.push(newSchedule[event]);
-          }
-          tempArray = sortEvents(tempArray);
-          eventDP.current.data = tempArray;
-        }
-      } catch (err) {
-        console.log("Could not load event file");
-      }
-      listAreaRef.current.refresh();
-    };
-
     useEffect(() => {
       const fetchSchedule = async () => {
         try {
-          // Clear local storage before fetching new data
-          localStorage.clear();
+          sessionStorage.clear();
           const importData = await ImportClockJson();
           if (importData != null) {
             const newSchedule = JSON.parse(importData);
@@ -177,7 +154,7 @@ export function ScheduleContent(props: Props) {
             for (let event in newSchedule) {
               if (new Date() < new Date(newSchedule[event].startTime)) {
                 tempArray.push(newSchedule[event]);
-                localStorage.setItem(
+                sessionStorage.setItem(
                   newSchedule[event].name,
                   newSchedule[event].startTime
                 );
@@ -241,7 +218,7 @@ export function ScheduleContent(props: Props) {
       tempName = tempName += "-" + tempArray.length + 1;
       console.log("name: " + tempName + " : " + fullStart);
       tempArray.push({ name: tempName, startTime: fullStart });
-      localStorage.setItem(tempName, fullStart);
+      sessionStorage.setItem(tempName, fullStart);
       tempArray = sortEvents(tempArray);
       eventDP.current.data = tempArray;
     }
@@ -299,7 +276,7 @@ export function ScheduleContent(props: Props) {
       props.loadNext();
     }
     eventDP.current.data = tempArray;
-    localStorage.removeItem(event.target.id);
+    sessionStorage.removeItem(event.target.id);
   };
 
   const listItemTemplate = useCallback(
