@@ -26,6 +26,7 @@ import { ojValidationGroup } from "ojs/ojvalidationgroup";
 type Props = {
   data: MutableRef<MutableArrayDataProvider<string, Event>>;
   loadNext: () => void;
+  apiUrl: string;
 };
 
 type Event = {
@@ -68,6 +69,7 @@ export function ScheduleContent(props: Props) {
 
   const [newEventDate, setNewEventDate] = useState(null);
   const [newEventTime, setNewEventTime] = useState(null);
+  const [fetchedEventData, setFetchedEventData] = useState([]);
 
   const [valid, setValid] = useState(null);
   const valGroup1 = useRef();
@@ -75,20 +77,33 @@ export function ScheduleContent(props: Props) {
   const listAreaRef = useRef(null);
 
   const importSchedule = () => {
-    let newSchedule = JSON.parse(scheduleValue);
-    let tempArray = [...eventDP.current.data];
-    let count = eventDP.current.data.length;
-    for (let event in newSchedule) {
-      newSchedule[event].name = newSchedule[event].name + "-" + count;
-      localStorage.setItem(
-        newSchedule[event].name,
-        newSchedule[event].startTime
-      );
-      tempArray.push(newSchedule[event]);
-      count++;
+    try {
+      let newSchedule = JSON.parse(scheduleValue);
+      let tempArray = [...eventDP.current.data];
+      let count = eventDP.current.data.length;
+  
+      for (let i = 0; i < fetchedEventData.length; i++) {
+        const event = fetchedEventData[i];
+        event.name = event.name + "-" + count;
+        localStorage.setItem(event.name, event.startTime);
+        tempArray.push(event);
+        count++;
+      }
+  
+      // Add the existing events from newSchedule
+      for (let i = 0; i < newSchedule.length; i++) {
+        const event = newSchedule[i];
+        event.name = event.name + "-" + count;
+        localStorage.setItem(event.name, event.startTime);
+        tempArray.push(event);
+        count++;
+      }
+  
+      newSchedule = sortEvents(tempArray);
+      eventDP.current.data = newSchedule;
+    } catch (error) {
+      console.error("Error importing schedule:", error);
     }
-    newSchedule = sortEvents(tempArray);
-    eventDP.current.data = newSchedule;
   };
 
   const formatDate = useCallback((data) => {
@@ -106,6 +121,79 @@ export function ScheduleContent(props: Props) {
     return dateObj.toLocaleString("en-US", options);
   }, []);
 
+
+    // Async Import from File
+    const ImportClockJson = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+        };
+    
+        const response = await fetch(props.apiUrl, requestOptions);
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const fetchedData = await response.text();
+        console.log("fetchedData", fetchedData);
+    
+        return fetchedData;
+      } catch (error) {
+        console.error("Error fetching event data:", error.message);
+        return null;
+      }
+    }
+    
+    const fetchSchedule = async () => {
+      try {
+        let importData = await ImportClockJson();
+        if (importData != null) {
+          let newSchedule = JSON.parse(importData);
+          let tempArray = [...eventDP.current.data];
+    
+          for (let event in newSchedule) {
+            newSchedule[event].name = newSchedule[event].name + "-" + tempArray.length + 1;
+            localStorage.setItem(newSchedule[event].name, newSchedule[event].startTime);
+            tempArray.push(newSchedule[event]);
+          }
+          tempArray = sortEvents(tempArray);
+          eventDP.current.data = tempArray;
+        }
+      } catch (err) {
+        console.log("Could not load event file");
+      }
+      listAreaRef.current.refresh();
+    };
+
+    useEffect(() => {
+      const fetchSchedule = async () => {
+        try {
+          // // Clear local storage before fetching new data
+          // localStorage.clear();
+          const importData = await ImportClockJson();
+          if (importData != null) {
+            const newSchedule = JSON.parse(importData);
+            let tempArray = [];
+            for (let event in newSchedule) {
+              if (new Date() < new Date(newSchedule[event].startTime)) {
+                tempArray.push(newSchedule[event]);
+                localStorage.setItem(
+                  newSchedule[event].name,
+                  newSchedule[event].startTime
+                );
+              }
+            }
+            let newListSorted = sortEvents(tempArray);
+            setFetchedEventData(newListSorted);
+          }
+        } catch (error) {
+          console.error("Could not load event file:", error.message);
+        }
+      };
+      fetchSchedule();
+    }, []);
+  
   const selectedChangedHandler = useCallback(
     (event: ojListView.selectedChanged<Event["name"], Event>) => {
       console.log("Selected: ", event.detail.value);
